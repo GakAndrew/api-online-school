@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\golov\\source\\repos\\online-school\\Domain\\Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "C:\\Users\\golov\\source\\repos\\online-school\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\golov\\source\\repos\\online-school\\Domain\\OnlineSchool.Domain.csproj",
+      "projectName": "OnlineSchool.Domain",
+      "projectPath": "C:\\Users\\golov\\source\\repos\\online-school\\Domain\\OnlineSchool.Domain.csproj",
       "packagesPath": "C:\\Users\\golov\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\golov\\source\\repos\\online-school\\Domain\\obj\\",
       "projectStyle": "PackageReference",

@@ -433,9 +433,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\golov\\source\\repos\\online-school\\WebApi\\WebApi.csproj",
-      "projectName": "WebApi",
-      "projectPath": "C:\\Users\\golov\\source\\repos\\online-school\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\golov\\source\\repos\\online-school\\WebApi\\OnlineSchool.WebApi.csproj",
+      "projectName": "OnlineSchool.WebApi",
+      "projectPath": "C:\\Users\\golov\\source\\repos\\online-school\\WebApi\\OnlineSchool.WebApi.csproj",
       "packagesPath": "C:\\Users\\golov\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\golov\\source\\repos\\online-school\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
