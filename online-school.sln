@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineSchool.Application", "OnlineSchool.Application\OnlineSchool.Application.csproj", "{FBD4409D-249B-40D0-A6AA-A5CAECFAA947}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineSchool.Migrations", "OnlineSchool.Migrations\OnlineSchool.Migrations.csproj", "{1DE62AE0-3299-4DBF-AD9C-0A277A8AF2C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{FBD4409D-249B-40D0-A6AA-A5CAECFAA947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD4409D-249B-40D0-A6AA-A5CAECFAA947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD4409D-249B-40D0-A6AA-A5CAECFAA947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE62AE0-3299-4DBF-AD9C-0A277A8AF2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE62AE0-3299-4DBF-AD9C-0A277A8AF2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE62AE0-3299-4DBF-AD9C-0A277A8AF2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE62AE0-3299-4DBF-AD9C-0A277A8AF2C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

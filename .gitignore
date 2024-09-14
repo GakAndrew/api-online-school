@@ -109,7 +109,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-*.json
 # OpenCover UI analysis results
 OpenCover/
 
@@ -118,10 +117,6 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
-
-# Local appsettings
-appsettings.Development.json
-appsettings.Production.json
 
 # Ignore .env file
 .env
