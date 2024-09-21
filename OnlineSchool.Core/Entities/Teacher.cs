@@ -13,11 +13,11 @@ namespace OnlineSchool.Core.Entities
 
         [Required]
         [MaxLength(100)]
-        public string MiddleName { get; set; } = "";
+        public string LastName { get; set; } = "";
 
         [Required]
         [MaxLength(100)]
-        public string LastName { get; set; } = "";
+        public string Patronymic { get; set; } = "";
 
         public string Description { get; set; } = "";
 
@@ -31,7 +31,7 @@ namespace OnlineSchool.Core.Entities
         [Phone]
         public string PhoneNumber { get; set; } = "";
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
 
         public List<Subject> Subjects { get; set; } = new List<Subject>();
     }
