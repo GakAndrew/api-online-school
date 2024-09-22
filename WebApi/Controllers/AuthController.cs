@@ -51,7 +51,7 @@ namespace OnlineSchool.WebApi.Controllers
             return Ok(new { message = "Пользователь успешно зарегистрирован" });
         }
 
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginModel model)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -61,9 +61,59 @@ namespace OnlineSchool.WebApi.Controllers
                 return Unauthorized("Неверный адрес электронной почты или пароль");
             }
 
-            var token = _jwtService.GenerateToken(user.Id.ToString(), user.Email);
+            var (accessToken, refreshToken) = _jwtService.GenerateTokens(user.Id.ToString(), user.Email);
 
-            return Ok(new { token });
+            var refreshTokenEntity = new RefreshToken
+            {
+                Token = refreshToken,
+                ExpiryDate = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["Jwt:RefreshTokenExpirationDays"])),
+                UserId = user.Id
+            };
+
+            _context.RefreshTokens.Add(refreshTokenEntity);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { AccessToken = accessToken, RefreshToken = refreshToken });
+        }
+
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
+        {
+            var principal = _jwtService.GetPrincipalFromExpiredToken(request.AccessToken);
+            var userId = principal.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("Invalid access token");
+            }
+
+            if (!int.TryParse(userId, out int userIdInt))
+            {
+                return BadRequest("Invalid user ID");
+            }
+
+            var savedRefreshToken = await _context.RefreshTokens
+                .SingleOrDefaultAsync(rt => rt.Token == request.RefreshToken && rt.UserId == int.Parse(userId));
+
+            if (savedRefreshToken == null || savedRefreshToken.ExpiryDate < DateTime.UtcNow)
+                return BadRequest("Invalid refresh token");
+
+            var user = await _context.Users.FindAsync(int.Parse(userId));
+
+            if (user == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            var (accessToken, newRefreshToken) = _jwtService.GenerateTokens(userId, user.Email);
+
+            savedRefreshToken.Token = newRefreshToken;
+            savedRefreshToken.ExpiryDate = DateTime.UtcNow.AddDays(Convert.ToDouble(_configuration["Jwt:RefreshTokenExpirationDays"]));
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { AccessToken = accessToken, RefreshToken = newRefreshToken });
         }
     }
 }
+
